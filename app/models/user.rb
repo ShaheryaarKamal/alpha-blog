@@ -12,5 +12,14 @@ class User < ApplicationRecord
                       length: {minimum: 0, maximun: 105 },
                       format: { with: VALID_EMAIL_REGEX }
 
-                       
+    
+                      
+    def full_name
+      "my name"
+    end
+
+    def username
+        "my username"
+    end
+
 end
