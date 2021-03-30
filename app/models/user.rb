@@ -13,13 +13,4 @@ class User < ApplicationRecord
                       format: { with: VALID_EMAIL_REGEX }
 
     
-                      
-    def full_name
-      "my name"
-    end
-
-    def username
-        "my username"
-    end
-
 end
