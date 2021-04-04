@@ -8,13 +8,18 @@
               by <%= link_to articlee.user.username, user_path(articlee.user) %>
             <% end %>
           </div>
+          <% if articlee.categories.any? %>
+          <div class="mt-2" ><%= render articlee.categories %> </div>
+          <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= link_to articlee.title, article_path(articlee), class: "text-success" %></h5>
             <p class="card-text"><%= truncate(articlee.description, length: 100) %></p>
             <%= link_to "View", article_path(articlee), class: "btn btn-outline-success" %>
+            <% if logged_in? && (articlee.user == current_user || current_user.admin?) %>
             <%= link_to "Edit", edit_article_path(articlee), class: "btn btn-outline-info" %>
             <%= link_to "Delete", article_path(articlee), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure?"} %>
-          </div>
+          <% end %>
+            </div>
           <div class="card-footer text-muted">
             <small>Created <%= time_ago_in_words(articlee.created_at) %> ago, 
             edited <%= time_ago_in_words(articlee.updated_at) %> ago</small>
